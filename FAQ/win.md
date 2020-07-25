@@ -71,3 +71,35 @@ DEL /F /A /Q \\?\%1
 RD /S /Q \\?\%1
 ```
 将要删除的文件拖到该批处理文件的图标上即可
+
+### 修改文件名
+
+1. 删除当前目录下所有文件的前 deletenum 个字段
+
+```shell
+@echo off
+setlocal enabledelayedexpansion
+ 
+set /p deletenum=deletenum:
+for /r %%i in (.) do (
+    for /f "delims=" %%a in (' dir /b "%%i\*.flv" 2^>nul ') do (
+		set "t=%%~na"
+        ren "%%i\%%a" "!t:~%deletenum%!%%~xa"
+    )
+)
+pause
+```
+
+2. 删除当前目录下所有文件的指定字段
+
+```shell
+@echo off
+Setlocal Enabledelayedexpansion
+
+set /p "str=your_delete_word:"
+
+for /f "delims=" %%i in ('dir /b *.*') do (
+	set "var=%%i" & ren "%%i" "!var:%str%=!"
+)
+```
+
