@@ -17,6 +17,16 @@ bcdedit /set {xxxxx} hypervisorlaunchtype off
 npm install -g http-server 
 启动服务
 http_folder -> cmd -> http-server
+
+### 软链接
+可以理解为文件夹的快捷图标
+```shell
+set cur_path="%cd"
+echo cur_path
+rd /q /s your_target_folder_path 	# 删除目标文件夹（如果存在）
+mklink /J your_target_folder_path from_folder_path
+pause
+```
 ### win10 文件夹中打开cmd
 open_cmd_here.reg
 ```shell
