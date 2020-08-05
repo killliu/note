@@ -337,7 +337,7 @@ console.log(total) // 161
 
 ### v-model
 
-双向绑定（v-bind 和 v-on 的语法糖）
+双向绑定（ 等价于 v-bind + v-on ）
 
 ```html
 ...
@@ -596,5 +596,83 @@ Vue.component('cpn', {
     })
 </script>
 
+```
+
+子传父 $emit
+
+```html
+...
+<div id ="app">
+    <cpn @itemclick="cpnclick"></cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <button v-for="item in categories" 
+                @click="btnClick(item)">
+            {{item.id}} : {{item.name}}
+        </button>
+    </div>
+</template>
+...
+<script>
+ const cpn = {
+        template:'#cpn',
+        data(){
+            return {
+                categories:[
+                    {id:'aaa', name:'热门推荐'},
+                    {id:'bbb', name:'手机数码'},
+                    {id:'ccc', name:'家具电器'},
+                    {id:'ddd', name:'电脑办公'}
+                ]
+            }
+        },
+        methods:{
+            btnClick(item){
+                this.$emit('itemclick', item)
+            }
+        }
+    }
+
+    var app = new Vue({
+        el:'#app',
+        components:{
+            cpn
+        },
+        methods: {
+            cpnclick(item){
+                console.log("btn clicked: " + item.name)
+            }
+        }
+    })
+</script>
+...
+```
+
+父子访问
+
+父组件访问子组件：<font color='red'>$children</font> 或 <font color='red'>$refs</font>
+
+子组件访问父组件：<font color='red'>$parent</font>
+
+### 插槽 slot
+
+具名插槽 ------> 使用  **<font size="6" color="red">v-slot</font>**
+
+```html
+...
+<div id="app">
+    <cpn><span slot="center">some change</span></cpn>
+</div>
+...
+<template id="cpn">
+    <div>
+        <slot name="left">left</slot>
+        <slot name="center">left</slot>
+        <slot name="right">left</slot>
+    </div>
+</template>
+...
 ```
 
