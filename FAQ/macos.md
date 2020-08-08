@@ -56,3 +56,51 @@ GOPROXY        https://goproxy.io   或  https://athens.azurefd.net
 Settings -> Go Modules(vgo) -> Enable Go Modules(vgo) integration
 
 Proxy -> on  或 https://goproxy.io 或 https://athens.azurefd.net
+
+### brew not found
+
+参考 [官网](https://brew.sh/)
+
+在终端中输入如下命令：
+
+> ```
+> /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+> ```
+
+查看 brew 版本
+
+> brew -v
+
+### npm
+
+安装 node
+
+> brew install node
+
+查看 node 版本
+
+> node -v
+
+查看 npm 版本
+
+> npm -v
+
+升级 npm
+
+> npm install nom -g
+
+查看所有全局安装的模块
+
+> npm list -g
+
+卸载模块
+
+> npm uninstall xxx
+
+卸载后查看
+
+> npm ls
+
+更新模块
+
+> npm update xxx
