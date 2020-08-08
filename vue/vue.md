@@ -457,6 +457,32 @@ v-model 默认 string 类型
 ...
 ```
 
+### keep-alive
+
+vue 内置组件
+
+xxx.vue
+
+```html
+...
+<!-- exclude的内容是正则表达式，逗号左右不能加空格 -->
+<keep-alive exclude="your_vue1,your_vue2">
+    <router-view/>
+</keep-alive>
+...
+	actived(){},
+	deactivated(){}
+	// 
+	beforeRouteLeave(to, from, next){
+		// do something...
+		next()
+	}
+...
+```
+
+- include 
+- exclude
+
 ### 组件
 
 Vue.extend() 创建组件构造器	---> 	Vue.component() 注册组件	--->	在 Vue 实例的作用域内使用

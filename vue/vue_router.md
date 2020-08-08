@@ -74,7 +74,7 @@ main.js
 redirect 重定向属性，可以配置默认首页
 
 #### 6. 使用路由 
-<router-link> 和 <router-view>
+<router-link>  +  <router-view>  或者  <router-view> + 代码
 
 ```html
 <template>
@@ -247,29 +247,3 @@ router.beforeEach((to, from, next)=>{
 - 组件内守卫
 
 参考链接：[Vue Router 导航守卫](https://router.vuejs.org/zh/guide/advanced/navigation-guards.html)
-
-### keep-alive
-
-vue 内置组件
-
-xxx.vue
-
-```html
-...
-<!-- exclude的内容是正则表达式，逗号左右不能加空格 -->
-<keep-alive exclude="your_vue1,your_vue2">
-    <router-view/>
-</keep-alive>
-...
-	actived(){},
-	deactivated(){}
-	// 
-	beforeRouteLeave(to, from, next){
-		// do something...
-		next()
-	}
-...
-```
-
-- include 
-- exclude
